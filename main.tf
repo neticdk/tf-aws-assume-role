@@ -87,6 +87,8 @@ resource "aws_iam_role" "aws_service" {
 
   assume_role_policy = data.aws_iam_policy_document.aws_service.json
 
+  max_session_duration = var.max_session_duration
+
   tags = merge(var.tags, local.tags)
 
   lifecycle {
@@ -102,6 +104,8 @@ resource "aws_iam_role" "aws_account" {
 
   assume_role_policy = data.aws_iam_policy_document.aws_account.json
 
+  max_session_duration = var.max_session_duration
+
   tags = merge(var.tags, local.tags)
 
   lifecycle {
@@ -116,6 +120,8 @@ resource "aws_iam_role" "saml_federation" {
   description = element(values(var.saml_roles), count.index)
 
   assume_role_policy = data.aws_iam_policy_document.saml_federation.json
+
+  max_session_duration = var.max_session_duration
 
   tags = merge(var.tags, local.tags)
 
