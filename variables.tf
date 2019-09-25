@@ -64,3 +64,9 @@ variable "saml_aud" {
   default     = "https://signin.aws.amazon.com/saml"
 }
 
+# The maximum session duration (in seconds) for the specified roles. 
+# This setting can have a value from 1 hour to 12 hours.
+variable "max_session_duration" {
+  description = "The maximum session duration (in seconds) for the specified roles."
+  default     = "3600"
+}
