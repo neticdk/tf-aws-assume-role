@@ -80,10 +80,10 @@ data "aws_iam_policy_document" "saml_federation" {
 
 // Role
 resource "aws_iam_role" "aws_service" {
-  count = length(keys(var.aws_service_roles))
+  for_each = var.aws_service_roles
 
-  name        = element(keys(var.aws_service_roles), count.index)
-  description = element(values(var.aws_service_roles), count.index)
+  name        = each.key
+  description = each.value
 
   assume_role_policy = data.aws_iam_policy_document.aws_service.json
 
@@ -97,10 +97,10 @@ resource "aws_iam_role" "aws_service" {
 }
 
 resource "aws_iam_role" "aws_account" {
-  count = length(keys(var.aws_account_roles))
+  for_each = var.aws_account_roles
 
-  name        = element(keys(var.aws_account_roles), count.index)
-  description = element(values(var.aws_account_roles), count.index)
+  name        = each.key
+  description = each.value
 
   assume_role_policy = data.aws_iam_policy_document.aws_account.json
 
@@ -114,10 +114,10 @@ resource "aws_iam_role" "aws_account" {
 }
 
 resource "aws_iam_role" "saml_federation" {
-  count = length(keys(var.saml_roles))
+  for_each = var.saml_roles
 
-  name        = element(keys(var.saml_roles), count.index)
-  description = element(values(var.saml_roles), count.index)
+  name        = each.key
+  description = each.value
 
   assume_role_policy = data.aws_iam_policy_document.saml_federation.json
 
