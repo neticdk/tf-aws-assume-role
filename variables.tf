@@ -7,6 +7,7 @@
 
 variable "tags" {
   description = "A map of tags to add to all resources"
+  type        = map
   default     = {}
 }
 
@@ -15,6 +16,7 @@ variable "tags" {
 # Value is the description
 variable "aws_service_roles" {
   description = "Roles to create that trust the aws_service_name service"
+  type        = map
   default     = {}
 }
 
@@ -23,6 +25,7 @@ variable "aws_service_roles" {
 # Value is the description
 variable "aws_account_roles" {
   description = "Roles to create that trust the aws_account_id account"
+  type        = map
   default     = {}
 }
 
@@ -31,36 +34,42 @@ variable "aws_account_roles" {
 # Value is the description
 variable "saml_roles" {
   description = "Roles to create that trust the saml_identity_provider saml provider"
+  type        = map
   default     = {}
 }
 
 # Used when creating accounts of type AWS Service
 variable "aws_service_name" {
   description = "Name of AWS Service to trust"
+  type        = string
   default     = ""
 }
 
 # Used when creating accounts of type AWS Account
 variable "aws_account_id" {
   description = "The AWS Account ID to trust"
+  type        = string
   default     = ""
 }
 
 # Used when creating account of type SAML
 variable "saml_identity_provider" {
   description = "The SAML provider to trust when federating using SAML"
+  type        = string
   default     = ""
 }
 
 # Used when creating accounts of type SAML
 variable "saml_account_id" {
   description = "The AWS Account ID to trust when federating using SAML"
+  type        = string
   default     = ""
 }
 
 # SAML AUD to use when creating accounts of type SAML
 variable "saml_aud" {
   description = "SAML Audience"
+  type        = string
   default     = "https://signin.aws.amazon.com/saml"
 }
 
@@ -68,5 +77,6 @@ variable "saml_aud" {
 # This setting can have a value from 1 hour to 12 hours.
 variable "max_session_duration" {
   description = "The maximum session duration (in seconds) for the specified roles."
+  type        = string
   default     = "3600"
 }
