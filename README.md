@@ -2,13 +2,13 @@
 
 ## Supported Terraform Versions
 
-Terraform 0.12
+Terraform >= 1.15, AWS provider ~> 6.0
 
 ## Usage
 
 ```hcl
 module "assume_roles" {
-  source  = "github.com/neticdk/tf-aws-assume-role"
+  source  = "github.com/neticdk/tf-aws-assume-role?ref=v2.0.0"
 
   aws_account_id         = "123456789012"
 
