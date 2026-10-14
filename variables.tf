@@ -7,7 +7,7 @@
 
 variable "tags" {
   description = "A map of tags to add to all resources"
-  type        = map
+  type        = map(string)
   default     = {}
 }
 
@@ -16,7 +16,7 @@ variable "tags" {
 # Value is the description
 variable "aws_service_roles" {
   description = "Roles to create that trust the aws_service_name service"
-  type        = map
+  type        = map(string)
   default     = {}
 }
 
@@ -25,7 +25,7 @@ variable "aws_service_roles" {
 # Value is the description
 variable "aws_account_roles" {
   description = "Roles to create that trust the aws_account_id account"
-  type        = map
+  type        = map(string)
   default     = {}
 }
 
@@ -34,7 +34,7 @@ variable "aws_account_roles" {
 # Value is the description
 variable "saml_roles" {
   description = "Roles to create that trust the saml_identity_provider saml provider"
-  type        = map
+  type        = map(string)
   default     = {}
 }
 
